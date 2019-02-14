@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>VueJs Instance</title>
+
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   </head>
+   <body>
+      <div id = "computedProperties">
+         <h1>Random No. from computed property: {{getRandomNumberFromComputedProperties}}</h1>
+         <h1>Random No. from method: {{getRandomNumberFromMethod()}}</h1>
+         <h1>Random No. from method : {{getRandomNumberFromMethod()}}</h1>
+         <h1>Random No. from computed property: {{getRandomNumberFromComputedProperties}}</h1>
+         <h1>Random No. from computed property: {{getRandomNumberFromComputedProperties}}</h1>
+         <h1>Random No. from computed property: {{getRandomNumberFromComputedProperties}}</h1>
+         <h1>Random No. from method: {{getRandomNumberFromMethod()}}</h1>
+         <h1>Random No. from method: {{getRandomNumberFromMethod()}}</h1>
+      </div>
+      <script>
+         var vm = new Vue({
+            el: '#computedProperties',
+            data: {
+               
+            },
+            methods: {
+               getRandomNumberFromMethod : function() {
+                  return Math.random();
+               }
+            },
+            computed :{
+               getRandomNumberFromComputedProperties : function(){
+                  return Math.random();
+               }
+            }
+         });
+      </script>
+   </body>
+</html>
