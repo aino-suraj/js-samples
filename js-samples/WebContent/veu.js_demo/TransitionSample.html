@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<style>
+    [v-cloak]{
+        display: none
+    }
+    .shootingText-leave-to, .shootingText-enter {
+        transform: translateX(150px) rotate(30deg);
+        opacity: 0;
+    }
+
+    .shootingText-enter-active, .shootingText-leave-active{
+        transition: all .5s ease;
+    }
+
+</style>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<div id="TransitionApp">
+    <transition name="shootingText">
+            <div class="m-3" v-cloak v-if="flag">
+                <p>Hey, i am from Transition.</p>
+            </div>
+    </transition>
+    <div class="m-3">
+        <a href="#" @click="flag= !flag">Click here for Transition Demo!!!</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    vm = new Vue({
+        el:"#TransitionApp",
+        data:{
+            flag:true
+        }
+
+    })
+
+</script>
+
+
