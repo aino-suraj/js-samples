@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+<style>
+    [cloak]{
+        display: none;
+    }
+</style>
+
+
+<div id="ComponentPropsApp">
+    <div class="container">
+       <my-apod></my-apod>
+       <my-apod date="2019-02-12"></my-apod>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+    Vue.component('my-apod',{
+        template:' <div> \
+        <img :src="imgSrc" :title="imgTitle"> \
+        <p>{{date || "today"}}</p> \
+        </div> ' ,
+        props:['date'],
+        data: function(){
+            return{
+                imgSrc:'',
+                imgTitle:''  
+            };
+        },
+        created:function(){
+            this.fetchApod();
+        },
+        methods:{
+            fetchApod: function(){
+                var apiKey="YslH07vgllZsl3ucnxfuxQOakJRvL9uyLcxzsrdy";
+                var url ="https://api.nasa.gov/planetary/apod?api_key=" + apiKey;
+                if(this.date){
+                    url=url+"&date="+this.date;
+                }
+                var self=this;    
+                axios.get(url)
+                .then(function(res){
+                    self.imgSrc = res.data.url;
+                    self.imgTitle = res.data.title;
+                });
+            }
+        }
+
+
+    })
+
+
+  var vm=new Vue({
+        el:"#ComponentPropsApp"
+    });
+</script>
