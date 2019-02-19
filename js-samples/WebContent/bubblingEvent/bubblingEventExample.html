@@ -1,21 +1,21 @@
 <div id="main" class="sample">
-    <div id="parent" >
-            parent
-        <div id="child">
-            child
-        </div>
-        <div id="other">
-            other
-        </div>
+        <button id="parent" >
+                parent
+            <button id="child">
+                child
+            </button>
+            <button id="other">
+                other
+            </button>
+        </button>
     </div>
-</div>
-
-<script>
-
-var parent=document.querySelector('#main');
-
-parent.addEventListener('click',function(e){
-    console.log(e.target.id.toLowerCase()+" clicked");
-})
-
-</script>
+    
+    <script>
+    
+    var parent=document.querySelector('#main');
+    
+    parent.addEventListener('click',function(e){
+        console.log(e.target.id.toLowerCase()+" clicked");
+    })
+    
+    </script>
